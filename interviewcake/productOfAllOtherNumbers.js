@@ -24,7 +24,7 @@
 /*     O(n^2) time, O(n) space     */
 /*---------------------------------*/
 
-var getProductsOfAllIntsExceptAtIndex = function (arr) {
+var getProductsOfAllIntsExceptAtIndexSub = function (arr) {
   var result = [];
   var pastProducts = 1;
   var products;
@@ -41,9 +41,9 @@ var getProductsOfAllIntsExceptAtIndex = function (arr) {
   return result;
 };
 
-console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]));
-console.log(getProductsOfAllIntsExceptAtIndex([100]));
-console.log(getProductsOfAllIntsExceptAtIndex([3, 5, 6, 0]));
+console.log(getProductsOfAllIntsExceptAtIndexSub([1, 7, 3, 4]));
+console.log(getProductsOfAllIntsExceptAtIndexSub([100]));
+console.log(getProductsOfAllIntsExceptAtIndexSub([3, 5, 6, 0]));
 
 
 /*-------------------------------*/

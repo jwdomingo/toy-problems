@@ -44,3 +44,32 @@ var getProductsOfAllIntsExceptAtIndex = function (arr) {
 console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]));
 console.log(getProductsOfAllIntsExceptAtIndex([100]));
 console.log(getProductsOfAllIntsExceptAtIndex([3, 5, 6, 0]));
+
+
+/*-------------------------------*/
+/*       OPTIMAL SOLUTION        */
+/*     O(n) time, O(n) space     */
+/*-------------------------------*/
+
+var getProductsOfAllIntsExceptAtIndex = function (arr) {
+  var productsAfterIndex = [];
+  var products = 1;
+  for (var i = arr.length - 1; i >= 0; i--) {
+    productsAfterIndex[i] = products;
+    products *= arr[i];
+  }
+
+  var result = [];
+  var productsBeforeIndex = 1;
+
+  for (var i = 0, l = arr.length; i < l; i++) {
+    result.push(productsBeforeIndex * productsAfterIndex[i]);
+    productsBeforeIndex *= arr[i];
+  }
+
+  return result;
+};
+
+console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]));
+console.log(getProductsOfAllIntsExceptAtIndex([100]));
+console.log(getProductsOfAllIntsExceptAtIndex([3, 5, 6, 0]));

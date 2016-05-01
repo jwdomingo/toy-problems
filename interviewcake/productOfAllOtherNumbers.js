@@ -52,24 +52,24 @@ console.log(getProductsOfAllIntsExceptAtIndexSub([3, 5, 6, 0]));
 /*-------------------------------*/
 
 var getProductsOfAllIntsExceptAtIndex = function (arr) {
-  var productsAfterIndex = [];
-  var products = 1;
+  var productsOfAllIntsExceptAtIndex = [];
+
+  var productsAfterIndex = 1;
   for (var i = arr.length - 1; i >= 0; i--) {
-    productsAfterIndex[i] = products;
-    products *= arr[i];
+    productsOfAllIntsExceptAtIndex[i] = productsAfterIndex;
+    productsAfterIndex *= arr[i];
   }
 
-  var result = [];
   var productsBeforeIndex = 1;
-
   for (var i = 0, l = arr.length; i < l; i++) {
-    result.push(productsBeforeIndex * productsAfterIndex[i]);
+    productsOfAllIntsExceptAtIndex[i] *= productsBeforeIndex;
     productsBeforeIndex *= arr[i];
   }
 
-  return result;
+  return productsOfAllIntsExceptAtIndex;
 };
 
 console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]));
 console.log(getProductsOfAllIntsExceptAtIndex([100]));
+console.log(getProductsOfAllIntsExceptAtIndex([]));
 console.log(getProductsOfAllIntsExceptAtIndex([3, 5, 6, 0]));

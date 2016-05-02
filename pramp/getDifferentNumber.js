@@ -19,20 +19,28 @@ A slightly improved version is to loop through the array and create a dictionary
 */
 
 // getDifferentNumber takes an arr
-
+var getDifferentNumber = function (arr) {
+  var len = arr.length;
   // return null if arr is empty
-
   // check if arr contains all possible non-negative integers already
-
-  // if so return null
+  if (!len || len === Infinity + 1) {
+    // if so return null
+    return null;
+  }
 
   // create hash
-
+  var hash = {};
   // loop through arr to map each value to hash
-
+  for (var i = 0; i < len; i++) {
     // value of each key is arbitrary
-
+    hash[i] = 1;
+  }
   // loop through arr again, this time looping up to n + 1
-
+  for (var diffNum = 0; diffNum <= len; diffNum++) {
     // based on pigeonhole principle, if we know one int will not belong in arr
     // simply return int if it is not hash
+    if (!hash[diffNum]) {
+      return diffNum;
+    }
+  }
+}

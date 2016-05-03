@@ -29,30 +29,51 @@ Time complexity would be O(n log n) and space would be O(n).
 
 
 // runWordCountEngine takes in a text document
-var runWordCountEngine = function (document) {
+var runWordCountEngine = document => {
   // declare wordCounts empty array
-
+  var wordCounts = [];
   // return wordCounts if document has no length
-
+  if (!document.length) {
+    return wordCounts;
+  }
   // remove all special characters using RegEx: /[^\w\s]/gi and /[_]/gi
-
   // split document by space and store into words array
-
+  var words = document.replace(/[^\w\s]/gi, '').replace(/[_]/gi, '').split(' ');
+  var len = words.length;
   // create empty object called hash
-
+  var hash = {};
+  var word = '';
   // loop through words
-
+  for (var w = 0; w < len; w++) {
     // insert new words into hash and init to 1
-
-    // increment existing words
-
+    word = words[w];
+    if (hash.hasOwnProperty(word)) {
+      // increment existing words
+      hash[word]++;
+    } else {
+      hash[word] = 1;
+    }
+  }
   // loop through hash and store each key-value pair in wordCounts
-
+  var count;
+  for (var word in hash) {
+    count = hash[word];
+    wordCounts.push([word, count]);
+  }
   // sort wordCounts using native JavaScript sort method
-
+  wordCounts.sort((a, b) => {
+    var countA = a[1];
+    var countB = b[1];
+    var wordA = a[0];
+    var wordB = b[0];
     // use index 1 of each tuple to compare whether or not a is less than b
-
     // if tuples at index 1 are the same, return whether a is less than b using index 0
-
+    if (countA === countB) {
+      return wordA < wordB ? -1 : (wordA > wordB ? 1 : 0);
+    } else {
+      return countA - countB;
+    }
+  });
   // return wordCounts
+  return wordCounts;
 };

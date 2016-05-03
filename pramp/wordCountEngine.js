@@ -29,7 +29,7 @@ Time complexity would be O(n log n) and space would be O(n).
 
 
 // runWordCountEngine takes in a text document
-
+var runWordCountEngine = function (document) {
   // declare wordCounts empty array
 
   // return wordCounts if document has no length
@@ -53,3 +53,6 @@ Time complexity would be O(n log n) and space would be O(n).
     // use index 1 of each tuple to compare whether or not a is less than b
 
     // if tuples at index 1 are the same, return whether a is less than b using index 0
+
+  // return wordCounts
+};
